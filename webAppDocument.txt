@@ -1,0 +1,60 @@
+====================================
+Number Sort Web Application Documentation
+====================================
+
+
+1. Vagrant setup
+Vagrant is setup with Virtualbox
+Virtualbox virsion: 4.2.16
+Vagrant version: 1.8.5
+
+
+2. Server setup on Vagrant
+Use vagrant box scotch-box, which is a LAMP stack includes PHP
+Webpages are put into scotch-box/public
+
+
+3. Web Application
+Use Bootstrap and AngularJs framework
+Small-screen devices friendly
+
+1) index.php
+Main page of the web application. 
+It includes Number Sort panel, warning message panel and result panel
+
+2) head.php
+Head content to be included in the main page.
+Can be reused for other pages if the web application expands.
+
+3) numberSortPanelTemplate.html
+Html template for Number Sort panel
+
+4) numberSortApp.js
+The root AngularJs module for the web application.
+Directives, global values, services are registerd/defined here.
+
+5) numberSortPanelCtrl.js
+This AngularJs controller dose things related to Number Sort panel.
+It sets scope variables and defines functions used by elements in the panel.
+
+6) formCtrl.js
+This controller is doing things related to the whole form.
+Firstly checking validation of all inputs, then sending request to php file and getting response to preset on webpage.
+
+7) processFormContent.php
+This php do bubble sort according to the number type selected.
+To be improved: expand number types to oct, hex, ...
+
+8) numberSortStyles.css
+Web application specific styles defined here.
+Some override bootstrap styles.
+
+
+4. Make Web Application public
+Use vagrant share.
+It allocates a radom generated address.
+The address will expire after 8 hours. Or, if vagrant terminated, address will also be invalid.
+
+
+
+

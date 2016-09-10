@@ -1,0 +1,33 @@
+<div class="panel panel-default">
+<!-- Html template for Number Sort panel -->
+
+  <div class="panel-heading">
+    <h3 class="panel-title">Number Sort</h3>
+  </div>
+  <div class="panel-body">
+    <p>Put numbers in the boxes below and click button to sort.</p>
+    <p>Minimum {{minInputNumber}} numbers, maximum {{maxInputNumber}} numbers</p>
+    <!-- minimum and maximum numbers of input is depend on variable set in glbConstantService -->
+    <br>
+
+    <!-- number type radio buttons -->
+    <p>Please select which type of number you want to sort</p>
+    <div class="row marginLeft0 marginBottom20">
+      <label class="radio-inline" ng-repeat="numType in numberTypes">
+        <input type="radio" name="numberType" value="{{numType}}"
+          ng-model="formData.numberType" ng-checked="$index==0" ng-change="clearPanels()">
+        {{numType}}
+      </label>
+    </div>
+
+    <!-- input boxes -->
+    <div class="row">
+      <div class="col-xs-6 col-sm-3 col-md-2 marginBottom20" ng-repeat="i in indexArray track by $index" ng-class="inputClass[$index]">
+        <input class="form-control" type="text" name="numToSort[$index]"
+            ng-model="formData.numToSort[$index]"
+            ng-change="checkNumber(formData.numToSort[$index], $index); clearMessage()">
+      </div>
+    </div>
+  </div>
+  
+</div>

@@ -1,0 +1,9 @@
+Number Sort Web Application User Guide
+
+1. Use radio buttons to select which type of number you want to sort
+2. Put numbers into cells
+3. Click "Sort" button, sorted numbers will be presented on the screen
+
+Please notice:
+You should put at least 5 numbers.
+If any number is invalid, the frame of the number will be marked red.
