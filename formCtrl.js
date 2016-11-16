@@ -49,19 +49,27 @@ function operateForm($scope, $http, $q, glbConstantService, clearFormMsgService,
       console.log(results);
       if( results[0] && results[1] ){
       //** if both return true, send request
-        $http({
-          method : 'POST',
-          url : 'processFormContent.php',
-          data : {
-            "formData" : $scope.formData,
-            "globalVar" : glbConstantService
-          }
-        })
-        .success(function(response){
-          console.log(response);
-          formMessage.result = response.toString();
-          $scope.formMessage.result = formMessage.result;
-        })
+        console.log($scope.formData);
+        var valuesArr = [];
+        for(var idx in $scope.formData.numToSort){
+          valuesArr[idx] = $scope.formData.numToSort[idx];
+        }
+        var sorted = bubbleSort(valuesArr);
+        formMessage.result = sorted.toString();
+        $scope.formMessage.result = formMessage.result;
+        // $http({
+        //   method : 'POST',
+        //   url : 'processFormContent.php',
+        //   data : {
+        //     "formData" : $scope.formData,
+        //     "globalVar" : glbConstantService
+        //   }
+        // })
+        // .success(function(response){
+        //   console.log(response);
+        //   formMessage.result = response.toString();
+        //   $scope.formMessage.result = formMessage.result;
+        // })
       }
     })
   }
@@ -74,15 +82,14 @@ function operateForm($scope, $http, $q, glbConstantService, clearFormMsgService,
   //** example: checkInputCount([0:"1", "2":3]) should return a promise with false
   function checkInputCount(inputArr){
     var deferred = $q.defer();
-    var isProceedPost = true;
+    var isProceedPost = false;
     var numArr = inputArr;
-    var inputCount = Object.keys(numArr).length;
-    if( inputCount < glbConstantService.minInputNumber){
-    //** check number of inputs
-      var isProceedPost = false;
-    }
-    else{
-      var isProceedPost = true;
+    if( inputArr!=undefined ){
+      var inputCount = Object.keys(numArr).length;
+      if( inputCount >= glbConstantService.minInputNumber){
+        //** check number of inputs
+        isProceedPost = true;
+      }
     }
     deferred.resolve(isProceedPost);
     return deferred.promise;

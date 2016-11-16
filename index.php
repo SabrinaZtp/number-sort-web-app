@@ -30,8 +30,8 @@
           ng-class="(formMessage.inputCount==''&&formMessage.inputValid=='')? 'hidden':''">
           <div class="panel-body">
             <p>Notice:</p>
-            <p ng-model="formMessage.inputCount">{{formMessage.inputCount}}</p>
-            <p ng-model="formMessage.inputValid">{{formMessage.inputValid}}</p>
+            <p ng-bind="formMessage.inputCount"></p>
+            <p ng-bind="formMessage.inputValid"></p>
           </div>
         </div>
       </div>
@@ -41,7 +41,7 @@
           ng-class="(formMessage.result=='')? 'hidden':''">
           <div class="panel-body">
             <p>Result:</p>
-            <p ng-model="formMessage.inputCount">{{formMessage.result}}</p>
+            <p ng-bind="formMessage.result"></p>
           </div>
         </div>
       </div>
@@ -59,6 +59,7 @@
   <script src="numberSortApp.js"></script>
   <script src="formCtrl.js"></script>
   <script src="numberSortPanelCtrl.js"></script>
+  <script src="bubbleSort.js"></script>
 
 </body>
 
